@@ -1,0 +1,8 @@
+.foo {
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+   
+}

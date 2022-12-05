@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  clienthost:"http://localhost:5000/api/authentication"
+  ClientHost:"http://localhost:5000/api/authentication",
+  AdminHost:"http://localhost:5000/api/admin",
+  ManagerHost:"http://localhost:5000/api/internal",
+  host:'http://localhost:5000'
   
 };
 

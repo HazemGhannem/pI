@@ -1,6 +1,6 @@
 export enum Option {
-    GAMIX,
-    SE,
-    SIM,
-    NIDS
+    GAMIX="GAMIX",
+    SE="SE",
+    SIM="Sim",
+    NIDS="NIDS"
 }

@@ -4,6 +4,7 @@ import { Etudiant } from './../Model/etudiant';
 import { Injectable } from '@angular/core';
 import { Observable,of } from 'rxjs';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Tahces } from '../Model/tahces';
 
 
 
@@ -11,12 +12,20 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EtudiantServiceService {
- clientHost= environment.clienthost
+ clientHost= environment.ClientHost
  
-
+ 
+  AdminHost=environment.AdminHost
+  authentication=environment.ClientHost
+  host=environment.host;
   constructor(private http:HttpClient) { }
 
   getAllStudent():Observable<Etudiant[]>{
     return this.http.get<Etudiant[]>(this.clientHost+"/show")
   }
+
+ 
+
+  
+
 }

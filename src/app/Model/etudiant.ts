@@ -11,17 +11,19 @@ export class Etudiant {
     password?:string
     email?:string
     image?:string
-    Token?:string
+    token?:string
     createdate?:Date
     banned?:Boolean
     verified?:Boolean
     option?:Option
     role?:Role
-    Username?:String
+    username?:String
     contrat?:Contrat[]
     equipe?:Equipe[]
     departement?:Departement
     tahces?:Tahces[]
+    phonenumber?:String 
+    active?:Boolean
 
 
 
