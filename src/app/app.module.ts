@@ -20,6 +20,8 @@ const routes : Routes = [
     EtudiantComponent,
     HeaderComponent,
     FooterComponent,
+    
+    
   ],
   imports: [
     BrowserModule,

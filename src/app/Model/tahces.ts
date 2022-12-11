@@ -2,12 +2,12 @@ import { Etudiant } from './etudiant';
 import { Tachetype } from "../enum/tachetype"
 
 export class Tahces {
-    IdTache?:number
+    idTache?:number
     name?:String
     type?:Tachetype
-    StartDate?:Date
-    EndDate?:Date
-    Description?:String
+    startDate?:Date
+    endDate?:Date
+    description?:String
     etudiant?:Etudiant
 
 }

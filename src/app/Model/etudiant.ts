@@ -24,8 +24,4 @@ export class Etudiant {
     tahces?:Tahces[]
     phonenumber?:String 
     active?:Boolean
-
-
-
-
 }

@@ -3,18 +3,23 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TacheComponent } from './tache/tache.component';
+import { DetailTacheComponent } from './detail-tache/detail-tache.component';
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    TacheComponent,
+    DetailTacheComponent,
+    
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
     ReactiveFormsModule,
-    
+    FormsModule,
     
   ]
 })

@@ -19,7 +19,7 @@ export class UsergarudGuard implements CanActivate {
       
     }
     //AZEAZE222@gmail.com
-    this.router.navigate(['/profile'])
+    this.router.navigate(['/'])
     return false
   }
   

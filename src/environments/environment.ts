@@ -7,6 +7,7 @@ export const environment = {
   ClientHost:"http://localhost:5000/api/authentication",
   AdminHost:"http://localhost:5000/api/admin",
   ManagerHost:"http://localhost:5000/api/internal",
+  userHost:"http://localhost:5000/api/user",
   host:'http://localhost:5000'
   
 };

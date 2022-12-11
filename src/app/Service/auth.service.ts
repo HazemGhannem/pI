@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Tahces } from '../Model/tahces';
+import { Pagination } from '../Model/pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,10 @@ import { Tahces } from '../Model/tahces';
 export class AuthService {
   AdminHost=environment.AdminHost
   authentication=environment.ClientHost
+  user=environment.userHost
   host=environment.host;
   public formdata!: FormGroup;
+  ref= new BehaviorSubject<Boolean>(true)
 
 
   public currentUser!: Observable<Etudiant>;
@@ -58,7 +61,6 @@ export class AuthService {
   }
   UserOff(email:any): Observable<any>{
     let HTTPOptions:Object = {
-
       headers: new HttpHeaders({
           'Content-Type': 'application/json'
       }),
@@ -66,7 +68,6 @@ export class AuthService {
    }
     return this.http.put<any>(this.authentication+ '/useroff',email,HTTPOptions)
   }
-
   logOut() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(new Etudiant);
@@ -74,7 +75,6 @@ export class AuthService {
   getImage(id:any): Observable<any>{
     return this.http.get<any>(this.authentication+`/image/${id}`)
   }
-
   updateuser(etudiant:Etudiant ,id:any): Observable<Etudiant>{
     let HTTPOptions:Object = {
       headers: new HttpHeaders({
@@ -84,7 +84,6 @@ export class AuthService {
     }
     return this.http.put<Etudiant>(this.authentication+`/updateuser/${id}`,etudiant,HTTPOptions)
   }
-
   getuserbyId(id:any):Observable<Etudiant>{
     let HTTPOptions:Object = {
       headers: new HttpHeaders({
@@ -96,9 +95,9 @@ export class AuthService {
   }
 
   //ADMIN Functions
+  
   getusernumber():Observable<number>{
     let HTTPOptions:Object = {
-
       headers: new HttpHeaders({
         authorization: `Bearer ${this.currentUserValue?.token}`,
         'content-type': 'application/json; charset=utf-8',
@@ -108,7 +107,6 @@ export class AuthService {
   }
   getStatistic():Observable<number>{
     let HTTPOptions:Object = {
-
       headers: new HttpHeaders({
         authorization: `Bearer ${this.currentUserValue?.token}`,
         'content-type': 'application/json; charset=utf-8',
@@ -116,17 +114,19 @@ export class AuthService {
     }
     return this.http.get<number>(this.AdminHost+`/getstatistic`,HTTPOptions)
   }
-  GetAllUser():Observable<Etudiant[]>{
+  GetAllUser(id:any,sort?:any):Observable<Pagination>{
     let HTTPOptions:Object = {
       headers: new HttpHeaders({
         authorization: `Bearer ${this.currentUserValue?.token}`,
         'content-type': 'application/json; charset=utf-8',
       })
     }
-      return this.http.get<Etudiant[]>(this.AdminHost+`/showallusers`,HTTPOptions)
-    
-  }
+    if (sort) {
+      return this.http.get<Pagination>(this.AdminHost+`/showallusers?page=${id}&sortby=${sort}`,HTTPOptions)  
+    }else
+    return this.http.get<Pagination>(this.AdminHost+`/showallusers?page=${id}`,HTTPOptions)
 
+  }
   BannUser(etudiant:Etudiant):Observable<any>{
     let HTTPOptions:Object = {
       headers: new HttpHeaders({
@@ -139,10 +139,9 @@ export class AuthService {
     
   }
 
-
   //Tach CRUD
-
-  addTache(tach:Tahces):Observable<Tahces>{
+  
+  addTache(tach:any):Observable<Tahces>{
     let HTTPOptions:Object = {
       headers: new HttpHeaders({
         authorization: `Bearer ${this.currentUserValue?.token}`,
@@ -150,7 +149,7 @@ export class AuthService {
       }),
       responseType: 'text'
     }
-    return this.http.post<Tahces>(this.AdminHost+"/addtach",tach,HTTPOptions)
+    return this.http.post<Tahces>(this.user+"/addtach",tach,HTTPOptions)
   }
   getTach():Observable<Tahces[]>{
     let HTTPOptions:Object = {
@@ -159,7 +158,7 @@ export class AuthService {
         'content-type': 'application/json; charset=utf-8',
       }),
     }
-    return this.http.get<Tahces[]>(this.AdminHost+"/getalltach",HTTPOptions)
+    return this.http.get<Tahces[]>(this.user+"/getalltach",HTTPOptions)
   }
   getTachById(id:any):Observable<Tahces>{
     let HTTPOptions:Object = {
@@ -169,7 +168,7 @@ export class AuthService {
       }),
       responseType: 'text'
     }
-    return this.http.get<Tahces>(this.AdminHost+`/gettach/${id}`,HTTPOptions)
+    return this.http.get<Tahces>(this.user+`/gettach/${id}`,HTTPOptions)
   }
   UpdateTache(Tache:Tahces,id:any):Observable<Tahces>{
     let HTTPOptions:Object = {
@@ -179,7 +178,7 @@ export class AuthService {
       }),
       responseType: 'text'
     }
-    return this.http.put<Tahces>(this.AdminHost+`/gettach/${id}`,Tache,HTTPOptions)
+    return this.http.put<Tahces>(this.user+`/gettach/${id}`,Tache,HTTPOptions)
   }
   deleteTach(id:any):Observable<Tahces>{
     let HTTPOptions:Object = {
@@ -189,10 +188,12 @@ export class AuthService {
       }),
       responseType: 'text'
     }
-    return this.http.delete<Tahces>(this.AdminHost+`/delete/${id}`,HTTPOptions)
+    return this.http.delete<Tahces>(this.user+`/delete/${id}`,HTTPOptions)
   }
 
 
-
+  behaviour(){
+    this.ref.next(true);
+  }
   
 }

@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { UsersComponent } from './users/users.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,11 +14,13 @@ import { TachesComponent } from './taches/taches.component';
   declarations: [
     DashboardComponent,
     UsersComponent,
-    TachesComponent
+    TachesComponent,
+    
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

@@ -19,7 +19,7 @@ export class UserpassgarudGuard implements CanActivate {
       
       
     }
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/'])
     return false
   }
   
