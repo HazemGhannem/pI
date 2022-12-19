@@ -35,6 +35,9 @@ export class ProfileComponent implements OnInit {
       this.service.getTach()))
   
   }
+  ref(val:any){
+    this.refresh$.next(true)
+  }
   hideobj(){
     this.hide=false
     this.hide2=true

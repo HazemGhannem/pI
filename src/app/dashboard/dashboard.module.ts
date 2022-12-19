@@ -16,11 +16,14 @@ import { TachesComponent } from './taches/taches.component';
     UsersComponent,
     TachesComponent,
     
+    
+    
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class DashboardModule { }

@@ -62,10 +62,14 @@ export class SignupComponent implements OnInit {
     const formData = new FormData();
       
       const users = this.service.formdata.value;
-      formData.append('user', JSON.stringify(users));
-      formData.append('file', this.userFile);
+       formData.append('user', JSON.stringify(users));
+       formData.append('file', this.userFile);
+      //  console.log(formData.getAll('user'))
+      //  console.log(formData.getAll('file'))     
       this.service.addUser(formData).subscribe( data => {
-      this.router.navigate(['/profile']);
+        console.log(data)
+        console.log("user created")
+      this.router.navigate(['/sign-up']);
     });
   }
   onSelectFile(event:any) {

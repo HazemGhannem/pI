@@ -38,16 +38,13 @@ export class AuthService {
   }
 
   addUser(info: Object): Observable<Object> {
-    let HTTPOptions:Object = {
-      headers: new HttpHeaders({
-        authorization: `Bearer ${this.currentUserValue?.token}`,
-        'content-type': 'application/json; charset=utf-8',
-      })
-    }
-    return this.http.post<Etudiant>(this.authentication+"/sign-up",info,HTTPOptions)
+    
+    return this.http.post<Etudiant>(this.authentication+"/sign-up",info)
   }
 
-
+  getnumberofuserperyear(ids:any): Observable<number> {
+    return this.http.get<number>(this.authentication+`/find/${ids}`)
+  }
   login(etudiant: Etudiant): Observable<any> {
     return this.http.post<any>(this.authentication+ '/sign-in', etudiant).pipe(
       map(response => {

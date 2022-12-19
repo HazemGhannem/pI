@@ -40,7 +40,7 @@ export class DetailTacheComponent implements OnInit {
   addtache(){
     this.form.etudiant=this.currentUser
     this.service.addTache(this.form).subscribe((d)=>{console.log(d)
-      this.service.behaviour()})
+    this.service.behaviour()})
     this.hidee=false
     this.newItemEvent.emit(this.hidee);
     

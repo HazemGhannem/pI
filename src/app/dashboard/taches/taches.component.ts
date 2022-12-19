@@ -69,6 +69,10 @@ export class TachesComponent implements OnInit {
         console.log(d)
     })
   }
- 
+  setname(val:any){
+      this.sort=val
+      console.log(this.sort)
+      this.refresh$.next(true)
+  }
 
 }

@@ -366,11 +366,14 @@
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">
-                        <th>
-                          ID
+                        <th >
+                          <a class="cursor-pointer"   (click)="setname('')">ID</a> 
                         </th>
-                        <th>
-                          Name
+                        <th >
+                          <a class="cursor-pointer" (click)="setname('email')">Email</a> 
+                        </th>
+                        <th >
+                            Name 
                         </th>
                         <th>
                           Status
@@ -387,6 +390,9 @@
                         <th>
                           Block User
                         </th>
+                        <th>
+                          Send message
+                        </th>
                       </thead>
                       <tbody>
                         <tr *ngFor="let user of AllEtudiant">
@@ -394,15 +400,20 @@
                             {{ user.idEtudiant }}
                           </td>
                           <td>
+                            {{ user.email }}
+                          </td>
+                          <td>
                             {{ user.username }}
                           </td>
                           <td>
-                            <div *ngIf="user.active">
+                            <div [ngStyle]="user.active?{'color':'green'}:{'color':'red'}">
+                            <div *ngIf="user.active" >
                               Online
                             </div>
                             <div *ngIf="!user.active">
                               Offline
                             </div>
+                          </div>
                           </td>
                           <td>
                             {{user.option}}
@@ -431,6 +442,12 @@
                             </a>
                           </td>
                         </div>
+                          <td >
+                            <a class="cursor-pointer" [routerLink]="['/chat/',user.idEtudiant]">
+                              Send Message
+                            </a>
+                          </td>
+                        
                         </tr>
                         <ul class="pagination">
                           <li class="page-item">

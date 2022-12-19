@@ -11,6 +11,8 @@ import { BehaviorSubject, Observable,  switchMap } from 'rxjs';
 })
 export class SidebarComponent implements OnInit {
   User$?:Observable<Etudiant[]> 
+    @Output() refreshevent = new EventEmitter<BehaviorSubject<Boolean>>()
+  
   refresh$ = new BehaviorSubject<Boolean>(true)
   constructor(private s:EtudiantServiceService,public service:AuthService) { }
 

@@ -22194,4 +22194,8 @@
     background-color: #fff;
   }
   /*# sourceMappingURL=dashboard-free.css.map */
-  
+  #divChart{
+   display: block;
+   width: 20px; 
+   height: 20px;
+  }
